@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Contact Us — HiredIn{% endblock %}
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Get in Touch</span>
+            <h2 class="section-title">Contact <span class="gradient-text">Us</span></h2>
+            <p class="section-subtitle">We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-card">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="contact-info">
+                                <h5><i class="fas fa-paper-plane me-2 text-primary"></i>Send a Message</h5>
+                                <p>Fill out the form and we'll respond within 24 hours.</p>
+
+                                <h5 class="mt-4"><i class="fas fa-clock me-2 text-primary"></i>Response Time</h5>
+                                <p>We typically respond within 24 hours during business days.</p>
+
+                                <h5 class="mt-4"><i class="fas fa-globe me-2 text-primary"></i>Global Support</h5>
+                                <p>We support users in 8+ countries with localized resume formats.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <form method="POST" action="{{ url_for('contact') }}">
+                                <div class="mb-3">
+                                    <label class="form-label">Your Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" class="form-control" placeholder="john@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Subject <span class="text-danger">*</span></label>
+                                    <select name="subject" class="form-select" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Technical Support">Technical Support</option>
+                                        <option value="Feature Request">Feature Request</option>
+                                        <option value="Partnership">Partnership</option>
+                                        <option value="Bug Report">Bug Report</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea name="message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}About HiredIn — Overview{% endblock %}
+{% block content %}
+<section class="overview-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">About Us</span>
+            <h2 class="section-title">About <span class="gradient-text">HiredIn</span></h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="overview-card">
+                    <h3>Our Mission</h3>
+                    <p>HiredIn was born from a simple belief: <strong>everyone deserves a fair chance at their dream job</strong>, regardless of where they live or what profession they're in. We noticed that job seekers worldwide struggle with country-specific resume formats, ATS rejections, and lack of guidance on what recruiters actually want.</p>
+
+                    <h3>What We Do</h3>
+                    <p>HiredIn is an AI-powered resume platform that helps professionals build, analyze, and optimize resumes for any country and any job. Our platform supports:</p>
+                    <ul>
+                        <li><strong>8+ Country Formats:</strong> USA, UK, Canada, Australia, Germany, France, India, UAE — each with unique formatting rules</li>
+                        <li><strong>ATS Optimization:</strong> Beat the bots with keyword analysis and formatting checks</li>
+                        <li><strong>Job Link Matching:</strong> Paste any job description and get a tailored resume</li>
+                        <li><strong>Rejection Prediction:</strong> Fix issues before recruiters see them</li>
+                        <li><strong>Multi-Profession Support:</strong> Works for tech, healthcare, finance, education, marketing, sales, and more</li>
+                        <li><strong>Migration Mode:</strong> Moving countries? Convert your resume format instantly</li>
+                    </ul>
+
+                    <h3>Who We Serve</h3>
+                    <p>HiredIn is built for <strong>every professional</strong>:</p>
+                    <div class="profession-grid">
+                        <span class="prof-badge"><i class="fas fa-code"></i> Software Engineers</span>
+                        <span class="prof-badge"><i class="fas fa-database"></i> Data Scientists</span>
+                        <span class="prof-badge"><i class="fas fa-bullhorn"></i> Marketers</span>
+                        <span class="prof-badge"><i class="fas fa-dollar-sign"></i> Finance Professionals</span>
+                        <span class="prof-badge"><i class="fas fa-heartbeat"></i> Healthcare Workers</span>
+                        <span class="prof-badge"><i class="fas fa-chalkboard-teacher"></i> Teachers</span>
+                        <span class="prof-badge"><i class="fas fa-paint-brush"></i> Designers</span>
+                        <span class="prof-badge"><i class="fas fa-briefcase"></i> Sales Executives</span>
+                        <span class="prof-badge"><i class="fas fa-users"></i> HR Professionals</span>
+                        <span class="prof-badge"><i class="fas fa-cogs"></i> Operations Managers</span>
+                        <span class="prof-badge"><i class="fas fa-flask"></i> Researchers</span>
+                        <span class="prof-badge"><i class="fas fa-truck"></i> Logistics</span>
+                    </div>
+
+                    <h3>Our Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <i class="fas fa-users"></i>
+                            <h5>Inclusivity</h5>
+                            <p>Every profession, every country, every background — we welcome all.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-lock"></i>
+                            <h5>Privacy First</h5>
+                            <p>Your data is yours. We encrypt, protect, and never sell.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-rocket"></i>
+                            <h5>Innovation</h5>
+                            <p>We continuously improve our AI to give you the best results.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h5>Accessibility</h5>
+                            <p>Free during launch. Quality tools shouldn't break the bank.</p>
+                        </div>
+                    </div>
+
+                    <h3>Join Us</h3>
+                    <p>50,000+ professionals have already built their dream resume with HiredIn. Whether you're a fresh graduate or a seasoned executive, we're here to help you get hired.</p>
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket me-2"></i>Get Started Free
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Multi-Country Convert — HiredIn{% endblock %}
+{% block content %}
+<section class="multi-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Bulk Export</span>
+            <h2 class="section-title">Convert to <span class="gradient-text">Multiple Countries</span></h2>
+            <p class="section-subtitle">Build once, export for multiple countries. Perfect for international job hunting.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="multi-card">
+                    <div class="mb-3">
+                        <label class="form-label">Select Target Countries</label>
+                        <div class="country-checkboxes">
+                            <label class="country-check"><input type="checkbox" value="usa"> 🇺🇸 USA</label>
+                            <label class="country-check"><input type="checkbox" value="uk"> 🇬🇧 UK</label>
+                            <label class="country-check"><input type="checkbox" value="canada"> 🇨🇦 Canada</label>
+                            <label class="country-check"><input type="checkbox" value="australia"> 🇦🇺 Australia</label>
+                            <label class="country-check"><input type="checkbox" value="germany"> 🇩🇪 Germany</label>
+                            <label class="country-check"><input type="checkbox" value="france"> 🇫🇷 France</label>
+                            <label class="country-check"><input type="checkbox" value="india"> 🇮🇳 India</label>
+                            <label class="country-check"><input type="checkbox" value="uae"> 🇦🇪 UAE</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100 btn-lg" onclick="convertMulti()">
+                        <i class="fas fa-download me-2"></i>Generate Multi-Country Resumes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

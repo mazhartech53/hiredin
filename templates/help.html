@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Help Center — HiredIn{% endblock %}
+{% block content %}
+<section class="help-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Support</span>
+            <h2 class="section-title">Help <span class="gradient-text">Center</span></h2>
+            <p class="section-subtitle">Find answers to common questions or send us a message.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-card mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h4><i class="fas fa-envelope me-2 text-primary"></i>Need More Help?</h4>
+                            <p class="mb-0">Can't find what you're looking for? Send us a message directly.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>How do I build a resume for a specific country?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Go to the Resume Builder, select your target country from the dropdown, and fill in your details. The form will automatically adapt to that country's requirements (e.g., photo for Germany/India, no photo for USA/UK).</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>What is the Job Link feature?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Job Link allows you to paste a job posting URL or description. Our system analyzes the requirements and helps you build a resume tailored specifically for that job role and country.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>How does the ATS Checker work?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Paste your resume text into the ATS Checker. Our AI scans for keywords, formatting issues, action verbs, quantifiable achievements, and common mistakes that cause ATS systems to reject resumes. You get a score and actionable feedback.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>Is my data secure?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. We use bcrypt password hashing, HTTPS encryption, and secure sessions. Your resume data is encrypted at rest. We never sell your data. Read our full <a href="{{ url_for('security') }}">Security Policy</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>Can I use HiredIn for any profession?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! HiredIn works for all professions — tech, healthcare, finance, education, marketing, sales, operations, design, research, and more. Our AI adapts to your industry.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h5>Is HiredIn really free?</h5>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! During our launch phase, all features are completely free. We will notify you well in advance before introducing any paid plans. No credit card required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

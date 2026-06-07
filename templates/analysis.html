@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}ATS Checker — HiredIn{% endblock %}
+{% block content %}
+<section class="analysis-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">AI Powered</span>
+            <h2 class="section-title">ATS <span class="gradient-text">Score Checker</span></h2>
+            <p class="section-subtitle">Paste your resume text and get an instant ATS compatibility score with actionable feedback.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="analysis-card">
+                    <div class="mb-3">
+                        <label class="form-label">Target Job Title (Optional)</label>
+                        <input type="text" class="form-control" id="jobTitleInput" placeholder="e.g., Software Engineer, Data Scientist">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Paste Your Resume Text</label>
+                        <textarea class="form-control" id="resumeText" rows="12" placeholder="Paste your full resume text here... Include all sections: contact info, summary, experience, education, skills, etc."></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-lg w-100" onclick="analyzeATS()">
+                        <i class="fas fa-chart-line me-2"></i>Analyze ATS Score
+                    </button>
+                </div>
+
+                <div id="atsResult" class="d-none">
+                    <div class="score-card">
+                        <div class="score-circle" id="scoreCircle">
+                            <span id="scoreValue">0</span>
+                            <small>/ 100</small>
+                        </div>
+                        <div class="score-details">
+                            <h4 id="scoreTitle">Analyzing...</h4>
+                            <p id="scoreDesc">Your resume is being analyzed against ATS standards.</p>
+                        </div>
+                    </div>
+                    <div class="feedback-card">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Improvement Suggestions</h5>
+                        <div id="feedbackList"></div>
+                    </div>
+                    <div class="keywords-card">
+                        <h5><i class="fas fa-tags me-2"></i>Keywords Found</h5>
+                        <div id="keywordsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

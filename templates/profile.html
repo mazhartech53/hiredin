@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Profile — HiredIn{% endblock %}
+{% block content %}
+<section class="profile-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <span>{{ current_user.name[0] if current_user.name else 'U' }}</span>
+                        </div>
+                        <h2>{{ current_user.name }}</h2>
+                        <p class="text-muted">@{{ current_user.username }}</p>
+                    </div>
+                    <form method="POST" action="{{ url_for('update_profile') }}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="name" class="form-control" value="{{ current_user.name }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" value="{{ current_user.username }}" disabled>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ current_user.email }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Country</label>
+                            <select name="country" class="form-select">
+                                {% for code, data in countries.items() %}
+                                <option value="{{ code }}" {{ 'selected' if current_user.country == code else '' }}>{{ data.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Member Since</label>
+                            <input type="text" class="form-control" value="{{ current_user.created_at.strftime('%B %d, %Y') }}" disabled>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Save Changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Country Coach — HiredIn{% endblock %}
+{% block content %}
+<section class="coach-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Expert Tips</span>
+            <h2 class="section-title">{{ coach_data.title }}</h2>
+            <p class="section-subtitle">Follow these best practices to create a winning resume for {{ coach_data.title.split()[-2] if coach_data.title.split()|length > 2 else 'this country' }}.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="tips-list">
+                    {% for tip in coach_data.tips %}
+                    <div class="tip-card">
+                        <div class="tip-number">{{ loop.index }}</div>
+                        <div class="tip-content">
+                            <p>{{ tip }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('builder', country=country) }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-file-alt me-2"></i>Build {{ coach_data.title.split()[-2] if coach_data.title.split()|length > 2 else 'Country' }} Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

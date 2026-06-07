@@ -1,0 +1,393 @@
+{% extends "base.html" %}
+{% block title %}HiredIn — Build Your Perfect Resume for Any Country{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span>Trusted by 50,000+ job seekers worldwide</span>
+                </div>
+                <h1 class="hero-title">
+                    Build Your <span class="gradient-text">Perfect Resume</span><br>
+                    For Any Country, Any Job
+                </h1>
+                <p class="hero-subtitle">
+                    HiredIn is the world's smartest AI-powered resume builder. Create professional, ATS-friendly resumes tailored to 8+ country formats. Whether you're in tech, healthcare, finance, education, or any profession — we've got you covered.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('builder') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-magic me-2"></i>Build Resume Now
+                    </a>
+                    <a href="{{ url_for('job_link') }}" class="btn btn-outline-dark btn-lg">
+                        <i class="fas fa-link me-2"></i>Paste Job Link
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Resumes Built</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">ATS Pass Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <div class="resume-card card-1">
+                        <div class="resume-header">
+                            <div class="resume-photo"></div>
+                            <div class="resume-info">
+                                <div class="resume-name">Alex Johnson</div>
+                                <div class="resume-role">Software Engineer</div>
+                            </div>
+                        </div>
+                        <div class="resume-line"></div>
+                        <div class="resume-line short"></div>
+                        <div class="resume-line"></div>
+                        <div class="resume-badge">ATS Score: 92</div>
+                    </div>
+                    <div class="resume-card card-2">
+                        <div class="resume-header">
+                            <div class="resume-photo"></div>
+                            <div class="resume-info">
+                                <div class="resume-name">Priya Sharma</div>
+                                <div class="resume-role">Product Manager</div>
+                            </div>
+                        </div>
+                        <div class="resume-line"></div>
+                        <div class="resume-line short"></div>
+                        <div class="resume-line"></div>
+                        <div class="resume-badge green">ATS Score: 88</div>
+                    </div>
+                    <div class="floating-icon icon-1"><i class="fas fa-check-circle"></i></div>
+                    <div class="floating-icon icon-2"><i class="fas fa-star"></i></div>
+                    <div class="floating-icon icon-3"><i class="fas fa-file-alt"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">All-in-One Platform</span>
+            <h2 class="section-title">Everything You Need to Get <span class="gradient-text">Hired</span></h2>
+            <p class="section-subtitle">From building to analyzing to converting — HiredIn handles it all.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('builder') }}" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-blue">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Resume Builder</h3>
+                        <p>Build professional resumes tailored to 8+ country formats — USA, UK, Canada, Germany, India, UAE, Australia, France.</p>
+                        <span class="feature-arrow">Get Started <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('job_link') }}" class="feature-card-link">
+                    <div class="feature-card featured">
+                        <div class="feature-badge">NEW</div>
+                        <div class="feature-icon bg-purple">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Job Link Resume</h3>
+                        <p>Paste any job link, description, or screenshot. We'll build a resume perfectly tailored to that specific job role and country.</p>
+                        <span class="feature-arrow">Try It Now <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('analysis') }}" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-green">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>ATS Checker</h3>
+                        <p>Scan your resume against Applicant Tracking Systems. Get a score and actionable feedback to pass the bots.</p>
+                        <span class="feature-arrow">Check Score <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('rejection_predictor') }}" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-orange">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Rejection Predictor</h3>
+                        <p>AI-powered analysis that predicts why recruiters might reject your resume — before you even apply.</p>
+                        <span class="feature-arrow">Analyze Now <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('coach') }}" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-teal">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Country Coach</h3>
+                        <p>Get expert tips for each country — what to include, what to avoid, and how to format for local standards.</p>
+                        <span class="feature-arrow">Learn More <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ url_for('migration') }}" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-pink">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>Migration Mode</h3>
+                        <p>Moving countries? Convert your resume from one country format to another in seconds with smart migration.</p>
+                        <span class="feature-arrow">Convert <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Simple Process</span>
+            <h2 class="section-title">Get Your Dream Job in <span class="gradient-text">3 Easy Steps</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Choose Your Country</h3>
+                    <p>Select from USA, UK, Canada, Germany, India, UAE, Australia, or France. Each format is optimized for local hiring standards.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fas fa-edit"></i></div>
+                    <h3>Fill Your Details</h3>
+                    <p>Add your experience, education, skills, and certifications. Our smart form adapts to your chosen country's requirements.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fas fa-download"></i></div>
+                    <h3>Export & Apply</h3>
+                    <p>Download as PDF or Word. Run ATS check, fix mistakes, and apply with confidence. Get hired faster!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- For All Professions -->
+<section class="professions-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section-header">
+                    <span class="section-badge">For Everyone</span>
+                    <h2 class="section-title">Built for <span class="gradient-text">Every Profession</span></h2>
+                    <p class="section-subtitle">Whether you're a software engineer, nurse, teacher, marketer, accountant, or artist — HiredIn works for you.</p>
+                </div>
+                <div class="profession-tags">
+                    <span class="prof-tag"><i class="fas fa-code"></i> Software Engineer</span>
+                    <span class="prof-tag"><i class="fas fa-database"></i> Data Scientist</span>
+                    <span class="prof-tag"><i class="fas fa-bullhorn"></i> Marketing</span>
+                    <span class="prof-tag"><i class="fas fa-dollar-sign"></i> Finance</span>
+                    <span class="prof-tag"><i class="fas fa-heartbeat"></i> Healthcare</span>
+                    <span class="prof-tag"><i class="fas fa-chalkboard-teacher"></i> Teacher</span>
+                    <span class="prof-tag"><i class="fas fa-paint-brush"></i> Designer</span>
+                    <span class="prof-tag"><i class="fas fa-briefcase"></i> Sales</span>
+                    <span class="prof-tag"><i class="fas fa-users"></i> HR</span>
+                    <span class="prof-tag"><i class="fas fa-cogs"></i> Operations</span>
+                    <span class="prof-tag"><i class="fas fa-flask"></i> Research</span>
+                    <span class="prof-tag"><i class="fas fa-truck"></i> Logistics</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="profession-visual">
+                    <div class="prof-circle">
+                        <div class="prof-center">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Any Job</span>
+                        </div>
+                        <div class="prof-orbit orbit-1">
+                            <span class="orbit-icon"><i class="fas fa-code"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-heartbeat"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-bullhorn"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        </div>
+                        <div class="prof-orbit orbit-2">
+                            <span class="orbit-icon"><i class="fas fa-dollar-sign"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-paint-brush"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-users"></i></span>
+                            <span class="orbit-icon"><i class="fas fa-cogs"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Countries Section -->
+<section class="countries-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Global Coverage</span>
+            <h2 class="section-title">Resume Formats for <span class="gradient-text">8+ Countries</span></h2>
+            <p class="section-subtitle">Each country has unique hiring standards. We handle them all.</p>
+        </div>
+        <div class="row g-3">
+            {% for code, data in countries.items() %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="{{ url_for('builder', country=code) }}" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">{{ {'usa':'🇺🇸','uk':'🇬🇧','canada':'🇨🇦','australia':'🇦🇺','germany':'🇩🇪','france':'🇫🇷','india':'🇮🇳','uae':'🇦🇪'}.get(code, '🌍') }}</div>
+                        <h4>{{ data.name }}</h4>
+                        <p>{{ data.page_limit }} page{{ 's' if data.page_limit > 1 else '' }} · {{ 'Photo required' if data.photo_required else 'No photo' }}</p>
+                        <span class="country-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Blog / Tips Section -->
+<section class="blog-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Career Tips</span>
+            <h2 class="section-title">Expert Advice to <span class="gradient-text">Land Your Job</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-blue">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">ATS</span>
+                        <h3>How to Beat the ATS Bots</h3>
+                        <p>Applicant Tracking Systems reject 75% of resumes before a human sees them. Learn the keywords, formatting, and structure that gets you past the bots.</p>
+                        <a href="{{ url_for('analysis') }}" class="blog-link">Try ATS Checker <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-purple">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Global</span>
+                        <h3>Country-Specific Resume Secrets</h3>
+                        <p>Germany wants your photo. The UK forbids it. The USA loves numbers. Learn what each country expects and avoid instant rejection.</p>
+                        <a href="{{ url_for('coach') }}" class="blog-link">Explore Coach <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-green">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Mistakes</span>
+                        <h3>Top 10 Resume Killers</h3>
+                        <p>Typos, passive voice, missing contact info, and weak phrases — these are the silent killers of your job application. Fix them before you apply.</p>
+                        <a href="{{ url_for('rejection_predictor') }}" class="blog-link">Check Your Risk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-orange">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Migration</span>
+                        <h3>Moving Abroad? Convert Your Resume</h3>
+                        <p>Your Indian resume won't work in Germany. Your US resume won't work in France. Learn how to migrate your resume format for international job hunting.</p>
+                        <a href="{{ url_for('migration') }}" class="blog-link">Migrate Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-pink">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Job Matching</span>
+                        <h3>Tailor Resume to Job Descriptions</h3>
+                        <p>Generic resumes get ignored. Paste the job link or description and let HiredIn build a resume that matches exactly what the employer wants.</p>
+                        <a href="{{ url_for('job_link') }}" class="blog-link">Paste Job Link <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-image bg-gradient-teal">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Career</span>
+                        <h3>Action Verbs That Get You Hired</h3>
+                        <p>"Responsible for" is weak. "Achieved," "Led," "Built," "Optimized" are strong. Learn the power words that make recruiters stop and read.</p>
+                        <a href="{{ url_for('builder') }}" class="blog-link">Build Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Ready to Get <span class="gradient-text">Hired?</span></h2>
+                    <p>Join 50,000+ professionals who built their dream resume with HiredIn. It's free, fast, and works for every profession.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Start Building Free
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Admin Messages — HiredIn{% endblock %}
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Admin Panel</span>
+            <h2 class="section-title">Contact <span class="gradient-text">Messages</span></h2>
+            <p class="section-subtitle">View and manage all messages sent through the contact form.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-envelope me-2"></i>All Messages</h4>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-danger">{{ messages|selectattr('status', 'equalto', 'unread')|list|length }} Unread</span>
+                            <span class="badge bg-warning">{{ messages|selectattr('status', 'equalto', 'read')|list|length }} Read</span>
+                            <span class="badge bg-success">{{ messages|selectattr('status', 'equalto', 'replied')|list|length }} Replied</span>
+                        </div>
+                    </div>
+
+                    {% if messages %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for msg in messages %}
+                                <tr class="{% if msg.status == 'unread' %}table-primary{% elif msg.status == 'replied' %}table-success{% endif %}">
+                                    <td>
+                                        {% if msg.status == 'unread' %}
+                                        <span class="badge bg-danger">Unread</span>
+                                        {% elif msg.status == 'read' %}
+                                        <span class="badge bg-warning">Read</span>
+                                        {% else %}
+                                        <span class="badge bg-success">Replied</span>
+                                        {% endif %}
+                                    </td>
+                                    <td><strong>{{ msg.name }}</strong></td>
+                                    <td><a href="mailto:{{ msg.email }}">{{ msg.email }}</a></td>
+                                    <td>{{ msg.subject }}</td>
+                                    <td>
+                                        <div style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            {{ msg.message }}
+                                        </div>
+                                    </td>
+                                    <td>{{ msg.created_at.strftime('%b %d, %Y %H:%M') }}</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            {% if msg.status == 'unread' %}
+                                            <a href="{{ url_for('read_message', msg_id=msg.id) }}" class="btn btn-sm btn-outline-primary" title="Mark as Read">
+                                                <i class="fas fa-envelope-open"></i>
+                                            </a>
+                                            {% endif %}
+                                            <button class="btn btn-sm btn-outline-success" title="Mark as Replied" onclick="document.getElementById('replyForm{{ msg.id }}').submit()">
+                                                <i class="fas fa-reply"></i>
+                                            </button>
+                                            <form id="replyForm{{ msg.id }}" method="POST" action="{{ url_for('reply_message', msg_id=msg.id) }}" class="d-none"></form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="{% if msg.status == 'unread' %}table-primary{% elif msg.status == 'replied' %}table-success{% endif %}">
+                                    <td colspan="7" class="pt-0 pb-3">
+                                        <div class="p-3 bg-light rounded">
+                                            <strong>Full Message:</strong>
+                                            <p class="mb-0 mt-2">{{ msg.message }}</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h5>No messages yet</h5>
+                        <p>Messages sent through the contact form will appear here.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

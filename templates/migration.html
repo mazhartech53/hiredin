@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Migration Mode — HiredIn{% endblock %}
+{% block content %}
+<section class="migration-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Smart Convert</span>
+            <h2 class="section-title">Migrate Your Resume <span class="gradient-text">Across Countries</span></h2>
+            <p class="section-subtitle">Moving to a new country? Convert your resume format instantly with our smart migration tool.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="migration-card">
+                    <div class="migration-selectors">
+                        <div class="from-country">
+                            <label class="form-label">From Country</label>
+                            <select class="form-select" id="fromCountry">
+                                <option value="usa">🇺🇸 United States</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="canada">🇨🇦 Canada</option>
+                                <option value="australia">🇦🇺 Australia</option>
+                                <option value="germany">🇩🇪 Germany</option>
+                                <option value="france">🇫🇷 France</option>
+                                <option value="india">🇮🇳 India</option>
+                                <option value="uae">🇦🇪 UAE</option>
+                            </select>
+                        </div>
+                        <div class="migration-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="to-country">
+                            <label class="form-label">To Country</label>
+                            <select class="form-select" id="toCountry">
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="usa">🇺🇸 United States</option>
+                                <option value="canada">🇨🇦 Canada</option>
+                                <option value="australia">🇦🇺 Australia</option>
+                                <option value="germany">🇩🇪 Germany</option>
+                                <option value="france">🇫🇷 France</option>
+                                <option value="india">🇮🇳 India</option>
+                                <option value="uae">🇦🇪 UAE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100 btn-lg mt-4" onclick="getMigrationSteps()">
+                        <i class="fas fa-exchange-alt me-2"></i>Get Migration Steps
+                    </button>
+                </div>
+
+                <div id="migrationResult" class="d-none">
+                    <div class="migration-result-card">
+                        <h5><i class="fas fa-list-check me-2"></i>Steps to Migrate</h5>
+                        <div id="migrationSteps"></div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('builder') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-file-alt me-2"></i>Start Building
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Job Link Resume — HiredIn{% endblock %}
+{% block content %}
+<section class="job-link-section">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-badge">Smart Matching</span>
+            <h2 class="section-title">Build Resume from <span class="gradient-text">Job Description</span></h2>
+            <p class="section-subtitle">Paste the job link, details, or screenshot. We'll tailor your resume to match exactly what the employer wants.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="job-form-card">
+                    <form method="POST" action="{{ url_for('job_link') }}" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Job URL (Optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                <input type="url" name="job_url" class="form-control" placeholder="Paste job posting URL here...">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Job Title *</label>
+                                <input type="text" name="job_title" class="form-control" placeholder="e.g., Senior Software Engineer" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" name="company" class="form-control" placeholder="e.g., Google">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Country</label>
+                                <select name="country" class="form-select">
+                                    <option value="">Select Country</option>
+                                    <option value="usa">🇺🇸 United States</option>
+                                    <option value="uk">🇬🇧 United Kingdom</option>
+                                    <option value="canada">🇨🇦 Canada</option>
+                                    <option value="australia">🇦🇺 Australia</option>
+                                    <option value="germany">🇩🇪 Germany</option>
+                                    <option value="france">🇫🇷 France</option>
+                                    <option value="india">🇮🇳 India</option>
+                                    <option value="uae">🇦🇪 UAE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Role Type</label>
+                                <select name="role_type" class="form-select">
+                                    <option value="">Select Type</option>
+                                    <option value="full-time">Full-Time</option>
+                                    <option value="part-time">Part-Time</option>
+                                    <option value="contract">Contract</option>
+                                    <option value="internship">Internship</option>
+                                    <option value="remote">Remote</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Job Description / Requirements</label>
+                            <textarea name="description" class="form-control" rows="6" placeholder="Paste the full job description here. Include required skills, experience level, qualifications, and responsibilities..."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Job Posting Screenshot (Optional)</label>
+                            <div class="file-upload-area">
+                                <input type="file" name="job_image" id="jobImage" accept="image/*" class="d-none" onchange="previewImage(this)">
+                                <div class="upload-placeholder" id="uploadPlaceholder" onclick="document.getElementById('jobImage').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload screenshot</p>
+                                    <small>PNG, JPG up to 5MB</small>
+                                </div>
+                                <div class="upload-preview d-none" id="imagePreview">
+                                    <img src="" alt="Preview" id="previewImg">
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeImage()">
+                                        <i class="fas fa-trash"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-magic me-2"></i>Generate Tailored Resume
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <h5><i class="fas fa-lightbulb me-2 text-warning"></i>How It Works</h5>
+                    <ul class="info-list">
+                        <li><span class="num">1</span> Paste the job link or description</li>
+                        <li><span class="num">2</span> Our AI extracts key requirements</li>
+                        <li><span class="num">3</span> We build a resume matching those skills</li>
+                        <li><span class="num">4</span> You download and apply with confidence</li>
+                    </ul>
+                </div>
+                <div class="info-card mt-3">
+                    <h5><i class="fas fa-star me-2 text-warning"></i>Recent Job Links</h5>
+                    {% if jobs %}
+                    <div class="recent-jobs">
+                        {% for job in jobs %}
+                        <div class="recent-job-item">
+                            <h6>{{ job.job_title }}</h6>
+                            <p class="small text-muted mb-0">{{ job.company or 'Unknown' }} · {{ job.country or 'Unknown' }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="text-muted small">No job links saved yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

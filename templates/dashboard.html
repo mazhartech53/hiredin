@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — HiredIn{% endblock %}
+{% block content %}
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="d-flex align-items-center gap-3">
+                <div class="dashboard-avatar">
+                    <span>{{ current_user.name[0] if current_user.name else 'U' }}</span>
+                </div>
+                <div>
+                    <h2>Welcome back, {{ current_user.name }}!</h2>
+                    <p class="text-muted mb-0">{{ current_user.profession }} · {{ {'usa':'🇺🇸 USA','uk':'🇬🇧 UK','canada':'🇨🇦 Canada','australia':'🇦🇺 Australia','germany':'🇩🇪 Germany','france':'🇫🇷 France','india':'🇮🇳 India','uae':'🇦🇪 UAE'}.get(current_user.country, '🌍') }}</p>
+                </div>
+            </div>
+            <a href="{{ url_for('builder') }}" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Create New Resume
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-file-alt me-2"></i>My Resumes</h4>
+                    </div>
+                    {% if resumes %}
+                    <div class="resume-list">
+                        {% for resume in resumes %}
+                        <div class="resume-item">
+                            <div class="resume-info">
+                                <h5>{{ resume.title }}</h5>
+                                <p class="text-muted mb-0">
+                                    {{ {'usa':'🇺🇸 USA','uk':'🇬🇧 UK','canada':'🇨🇦 Canada','australia':'🇦🇺 Australia','germany':'🇩🇪 Germany','france':'🇫🇷 France','india':'🇮🇳 India','uae':'🇦🇪 UAE'}.get(resume.country_code, '🌍') }}
+                                    · ATS Score: {{ resume.ats_score }}%
+                                    · {{ resume.created_at.strftime('%b %d, %Y') }}
+                                </p>
+                            </div>
+                            <div class="resume-actions">
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-outline-success"><i class="fas fa-download"></i></button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-file-alt"></i>
+                        <h5>No resumes yet</h5>
+                        <p>Create your first resume to get started</p>
+                        <a href="{{ url_for('builder') }}" class="btn btn-primary">Build Resume</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-link me-2"></i>Job Links</h4>
+                    </div>
+                    {% if jobs %}
+                    <div class="job-list">
+                        {% for job in jobs %}
+                        <div class="job-item">
+                            <h6>{{ job.job_title }}</h6>
+                            <p class="text-muted small mb-0">{{ job.company or 'Unknown Company' }} · {{ job.country or 'Unknown' }}</p>
+                            <span class="badge bg-light text-dark">{{ job.role_type or 'General' }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="empty-state small">
+                        <i class="fas fa-link"></i>
+                        <p class="mb-0">No job links saved</p>
+                    </div>
+                    {% endif %}
+                    <a href="{{ url_for('job_link') }}" class="btn btn-outline-primary w-100 mt-3">
+                        <i class="fas fa-plus me-2"></i>Add Job Link
+                    </a>
+                </div>
+                <div class="dashboard-card mt-4">
+                    <div class="card-header">
+                        <h4><i class="fas fa-chart-pie me-2"></i>Quick Stats</h4>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-value">{{ resumes|length }}</span>
+                            <span class="stat-label">Resumes</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value">{{ jobs|length }}</span>
+                            <span class="stat-label">Job Links</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value">{{ current_user.country|upper }}</span>
+                            <span class="stat-label">Country</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

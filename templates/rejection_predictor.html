@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Rejection Predictor — HiredIn{% endblock %}
+{% block content %}
+<section class="rejection-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">AI Prediction</span>
+            <h2 class="section-title">Rejection <span class="gradient-text">Risk Predictor</span></h2>
+            <p class="section-subtitle">Our AI analyzes your resume and predicts why recruiters might reject it — before you even apply.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="analysis-card">
+                    <div class="mb-3">
+                        <label class="form-label">Paste Your Resume Text</label>
+                        <textarea class="form-control" id="rejectionText" rows="12" placeholder="Paste your full resume text here for rejection risk analysis..."></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-lg w-100" onclick="analyzeRejection()">
+                        <i class="fas fa-shield-alt me-2"></i>Analyze Rejection Risk
+                    </button>
+                </div>
+
+                <div id="rejectionResult" class="d-none">
+                    <div class="risk-card" id="riskCard">
+                        <div class="risk-score">
+                            <span id="riskScore">0</span>
+                            <small>% Safe</small>
+                        </div>
+                        <div class="risk-details">
+                            <h4 id="riskLevel">Analyzing...</h4>
+                            <p id="riskDesc">Your resume is being analyzed for rejection risk factors.</p>
+                        </div>
+                    </div>
+                    <div class="risks-list-card">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Risk Factors Found</h5>
+                        <div id="risksList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

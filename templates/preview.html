@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Resume Preview — HiredIn{% endblock %}
+{% block content %}
+<section class="preview-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge">Preview</span>
+            <h2 class="section-title">Your <span class="gradient-text">Resume Preview</span></h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="preview-card">
+                    <div id="previewContent">
+                        <div class="preview-placeholder">
+                            <i class="fas fa-file-alt"></i>
+                            <p>Build your resume to see the preview here</p>
+                            <a href="{{ url_for('builder') }}" class="btn btn-primary">Go to Builder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-actions text-center mt-4">
+                    <button class="btn btn-primary btn-lg" onclick="downloadPDF()">
+                        <i class="fas fa-file-pdf me-2"></i>Download PDF
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg" onclick="downloadWord()">
+                        <i class="fas fa-file-word me-2"></i>Download Word
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

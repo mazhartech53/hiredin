@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Verify Account — HiredIn{% endblock %}
+{% block content %}
+<section class="auth-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-logo">
+                            <span class="logo-icon">H</span>
+                            <span class="logo-text">HiredIn</span>
+                        </div>
+                        <h2>Verify Your Account</h2>
+                        <p>Enter the OTP sent to your email or mobile number</p>
+                    </div>
+                    <form method="POST" action="{{ url_for('verify_otp', user_id=user.id) }}">
+                        <div class="mb-4">
+                            <label class="form-label">Enter OTP Code</label>
+                            <div class="otp-inputs">
+                                <input type="text" name="otp" class="form-control form-control-lg text-center" placeholder="000000" maxlength="6" required>
+                            </div>
+                            <small class="form-text text-muted">OTP expires in 10 minutes</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-lg">
+                            <i class="fas fa-check-circle me-2"></i>Verify Account
+                        </button>
+                    </form>
+                    <div class="auth-footer mt-4">
+                        <p>Didn't receive OTP? <a href="{{ url_for('resend_otp', user_id=user.id) }}">Resend OTP</a></p>
+                        <p class="mt-2"><a href="{{ url_for('login') }}">Back to Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
